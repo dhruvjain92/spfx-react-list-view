@@ -1,0 +1,13 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
+  "solution": {
+    "name": "react-list-grid-view-client-side-solution",
+    "id": "93b9ec8b-9a76-43b7-850e-e24a9d1d629e",
+    "version": "1.0.0.0",
+    "includeClientSideAssets": true,
+    "isDomainIsolated": false
+  },
+  "paths": {
+    "zippedPackage": "solution/react-list-grid-view.sppkg"
+  }
+}
