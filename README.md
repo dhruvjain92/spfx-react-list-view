@@ -15,6 +15,7 @@ Following properties are available in the webpart configuration.
 |-----------------|--------------|
 |Site URL|URL of the site where the list is located. It should have a trailing slash.|
 |List Name|Name of the list.
+|Internal List Name|Internal Name of the list. This can be seen in the URL when viewing list settings or list content.
 |List Columns to show in grid| This shows the list columns. This is generated dynamically based on site URL and list name.
 |Filter Query|This fields contain the filter for the list. For example, if you have to match field *FIELD_1* with value *VALUE_1*, the query will be *FIELD_1 eq VALUE_1*.
 |Internal Column Name for View Link| This is the internal column name for the view link. Leave blank to disable view link. ID column must be selected in list columns for view link to work.|
@@ -27,4 +28,3 @@ Following properties are available in the webpart configuration.
 ## Known Issues
  - Multiple Metadata columns in the same list causes issues. 
  - ID column is a must for view and edit links for now. It will be removed in future.
- - List name and list's internal name are assumed to be same. 

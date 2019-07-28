@@ -18,6 +18,7 @@ export interface IReactListViewWebPartProps {
   description: string;
   siteUrl: string;
   listName: string;
+  internalListName: string;
   multiSelect: string[];
   filterQuery: string;
   ColumnNumberForContext: string;
@@ -46,9 +47,9 @@ export default class ReactListViewWebPart extends BaseClientSideWebPart<IReactLi
               description: pthis.properties.description,
               columns: lcol,
               rows: pthis.getListRows(listItems, pthis),
-              newURL: pthis.properties.siteUrl + "/Lists/" + pthis.properties.listName + "/NewForm.aspx",
-              dispURL: pthis.properties.siteUrl + "/Lists/" + pthis.properties.listName + "/DispForm.aspx?ID=",
-              editURL: pthis.properties.siteUrl + "/Lists/" + pthis.properties.listName + "/EditForm.aspx?ID=",
+              newURL: pthis.properties.siteUrl + "/Lists/" + pthis.properties.internalListName + "/NewForm.aspx",
+              dispURL: pthis.properties.siteUrl + "/Lists/" + pthis.properties.internalListName + "/DispForm.aspx?ID=",
+              editURL: pthis.properties.siteUrl + "/Lists/" + pthis.properties.internalListName + "/EditForm.aspx?ID=",
               viewColumnName: pthis.properties.ColumnNumberForContext,
               showNewButton: pthis.properties.showNewButton,
               showEditButton: pthis.properties.showEditButton,
@@ -128,6 +129,9 @@ export default class ReactListViewWebPart extends BaseClientSideWebPart<IReactLi
                 }),
                 PropertyPaneTextField('listName', {
                   label: "List Name"
+                }),
+                PropertyPaneTextField('internalListName', {
+                  label: "Internal List Name"
                 }),
                 PropertyFieldMultiSelect('multiSelect', {
                   key: 'multiSelect',
