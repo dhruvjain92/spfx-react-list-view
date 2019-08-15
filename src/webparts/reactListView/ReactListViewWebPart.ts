@@ -14,6 +14,7 @@ import { PropertyFieldMultiSelect } from '@pnp/spfx-property-controls/lib/Proper
 import axios from 'axios';
 import { ColumnParser } from '../../utilities/columnParser';
 import { SPCalls } from '../../utilities/spCalls';
+import { Constants } from '../../utilities/constants';
 export interface IReactListViewWebPartProps {
   description: string;
   siteUrl: string;
@@ -47,9 +48,9 @@ export default class ReactListViewWebPart extends BaseClientSideWebPart<IReactLi
               description: pthis.properties.description,
               columns: lcol,
               rows: pthis.getListRows(listItems, pthis),
-              newURL: pthis.properties.siteUrl + "/Lists/" + pthis.properties.internalListName + "/NewForm.aspx",
-              dispURL: pthis.properties.siteUrl + "/Lists/" + pthis.properties.internalListName + "/DispForm.aspx?ID=",
-              editURL: pthis.properties.siteUrl + "/Lists/" + pthis.properties.internalListName + "/EditForm.aspx?ID=",
+              newURL: pthis.properties.siteUrl + "/Lists/" + pthis.properties.internalListName + "/" + Constants.ListFormURLs.NewForm,
+              dispURL: pthis.properties.siteUrl + "/Lists/" + pthis.properties.internalListName + "/" + Constants.ListFormURLs.ViewForm,
+              editURL: pthis.properties.siteUrl + "/Lists/" + pthis.properties.internalListName + "/" + Constants.ListFormURLs.EditForm,
               viewColumnName: pthis.properties.ColumnNumberForContext,
               showNewButton: pthis.properties.showNewButton,
               showEditButton: pthis.properties.showEditButton,
@@ -66,7 +67,7 @@ export default class ReactListViewWebPart extends BaseClientSideWebPart<IReactLi
   private setColumnsForPropertyPane(data, pthis) {
     pthis.globalOptions = [];
     data.forEach(item => {
-      if (item.Group != "_Hidden" && item.TypeAsString != "Attachments") {
+      if (item.Group != Constants.HiddenFilter && item.TypeAsString != Constants.AttachmentsType) {
         pthis.globalOptions.push({
           key: item.InternalName,
           text: item.Title
@@ -125,40 +126,40 @@ export default class ReactListViewWebPart extends BaseClientSideWebPart<IReactLi
               groupName: strings.BasicGroupName,
               groupFields: [
                 PropertyPaneTextField('siteUrl', {
-                  label: "Site URL:"
+                  label: Constants.PropertyPaneLabels.siteUrl
                 }),
                 PropertyPaneTextField('listName', {
-                  label: "List Name"
+                  label: Constants.PropertyPaneLabels.listName
                 }),
                 PropertyPaneTextField('internalListName', {
-                  label: "Internal List Name"
+                  label: Constants.PropertyPaneLabels.internalListName
                 }),
                 PropertyFieldMultiSelect('multiSelect', {
                   key: 'multiSelect',
-                  label: "List Columns to show in grid",
+                  label: Constants.PropertyPaneLabels.multiSelect,
                   options: this.globalOptions,
                   selectedKeys: this.properties.multiSelect
                 }),
                 PropertyPaneTextField('filterQuery', {
-                  label: "Filter Query"
+                  label: Constants.PropertyPaneLabels.filterQuery
                 }),
                 PropertyPaneTextField('ColumnNumberForContext', {
-                  label: "Internal Column Name for View Link"
+                  label: Constants.PropertyPaneLabels.ColumnNumberForContext
                 }),
                 PropertyPaneCheckbox('showNewButton', {
-                  text: "Show New Button"
+                  text: Constants.PropertyPaneLabels.showNewButton
                 }),
                 PropertyPaneCheckbox('showEditButton', {
-                  text: "Show Edit Button"
+                  text: Constants.PropertyPaneLabels.showEditButton
                 }),
                 PropertyPaneCheckbox('showExportButton', {
-                  text: "Show Export Button"
+                  text: Constants.PropertyPaneLabels.showExportButton
                 }),
                 PropertyPaneTextField('webpartHeight', {
-                  label: "Webpart Height (Only numeric values allowed. Unit is pixels)"
+                  label: Constants.PropertyPaneLabels.webpartHeight
                 }),
                 PropertyPaneTextField('columnFormatter', {
-                  label: "Column formatting (Beta feature)",
+                  label: Constants.PropertyPaneLabels.columnFormatter,
                   multiline: true,
                   rows: 6
                 }),
