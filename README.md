@@ -1,4 +1,4 @@
-| WARNING: I am busy in other stuff so this has taken a back seat and hasn't been updated in a while. Please be careful while using it. |
+> **WARNING**: I am busy in other stuff so this has taken a back seat and hasn't been updated in a while. Please be careful while using it.
 
 # React List Grid View
 React List Grid View is a SPFx webpart built to display a list view from any site collection or subsite.
